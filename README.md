@@ -1,4 +1,4 @@
-# origami-build-tools [![Build Status](https://travis-ci.org/Financial-Times/origami-build-tools.svg)](https://travis-ci.org/Financial-Times/origami-build-tools)
+# origami-build-tools [![Build Status](https://travis-ci.org/Financial-Times/origami-build-tools.svg?branch=master)](https://travis-ci.org/Financial-Times/origami-build-tools)
 
 Standardised build tools for Origami modules and products developed based on these modules.
 
@@ -112,10 +112,11 @@ Runs:
 	- autoprefixerRemove: `Boolean` Remove unneeded prefixes (Default: true)
 	- buildCss: `String` Name of the built CSS bundle. (Default: 'main.css')
 	- buildFolder: `String` Path to directory where the built file will be created. (Default: './build/')
-	- env: `String` It can be either 'production' or 'development'. If it's 'production', it will compile the Sass file with the 'compressed' style option and will also run [csso](https://github.com/css/csso). (Default: 'development')
+	- env: `String` It can be either 'production' or 'development'. If it's 'production', it will compile the Sass file with the 'compressed' style option and will also run [clean-css](https://github.com/jakubpawlowicz/clean-css). (Default: 'development')
 	- hash: `Boolean` Set to true to generate a hashed JavaScript built file to facilitate cachebusting. Also generates a JSON file with mappings to the original filename. (Default: false)
+	- cleanCss: `Object` Config object to pass to [clean-css](https://github.com/jakubpawlowicz/clean-css/blob/master/README.md#how-to-use-clean-css-programmatically). (Default: `{advanced: false}`)
 
-	_(Sourcemaps aren't generated as this feature is incompatible with csso. We will revisit this when [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass) 1.0 is released)_
+	_(Sourcemaps aren't generated as this feature is incompatible with clean-css. We will revisit this when [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass) 1.0 is released)_
 
 ### `demo`
 
@@ -204,6 +205,17 @@ npm install --save-dev origami-build-tools
 npm install --save-dev gulp
 npm install -g gulp
 ```
+
+
+The `origami-build-tools` module also defines some helper methods to verify and list the available tasks:
+
+`obt.isValid(taskName)` will return a boolean value indicating whether the
+name of the given task is valid.
+
+`obt.list()` will return a list of valid task names.
+
+`obt.loadAll()` will return an object with all of the available tasks loaded onto it.
+Access tasks on this object as properties in the same way as the `obt` object.
 
 ## Licence
 This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).
