@@ -14,8 +14,6 @@ If you have any issues with OBT, please check out [troubleshooting guide](https:
 
 		npm install -g origami-build-tools
 
-__Attention:__ _OBT doesn't work with 'npm >2.7.5' due to a a problem with npm and Editorconfig 0.11.x_
-
 ## Usage
 
 Run the install task for the first time will to install required dependencies:
@@ -126,6 +124,7 @@ Config:
 * demoConfig: `String` The path to the demo config file. Default: `demos/src/config.json`
 * updateorigami: `Boolean` The `demos` property of your `origami.json` file will be updated - to list the demo files that have been created.
 * runServer: `Boolean` Whether you want to run a local server or not. If true, it also sets 'local' to true. Default: `false`
+* livereload: `Boolean` Will enable livereload on `runServer`. Default: `true`
 
 Runs:
 
